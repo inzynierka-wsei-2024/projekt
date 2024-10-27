@@ -1,0 +1,36 @@
+Following resources are marked to be skipped:
+
+- /subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/advancedThreatProtectionSettings/Default
+- /subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/advisors/CreateIndex
+- /subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/advisors/DbParameterization
+- /subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/advisors/DefragmentIndex
+- /subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/advisors/DropIndex
+- /subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/advisors/ForceLastGoodPlan
+- /subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/auditingPolicies/Default
+- /subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/auditingSettings/Default
+- /subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/azureADOnlyAuthentications/Default
+- /subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/connectionPolicies/default
+- /subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/databases/master/advancedThreatProtectionSettings/Default
+- /subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/databases/master/auditingPolicies/Default
+- /subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/databases/master/auditingSettings/Default
+- /subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/databases/master/geoBackupPolicies/Default
+- /subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/databases/master/ledgerDigestUploads/Current
+- /subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/databases/master/securityAlertPolicies/Default
+- /subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/databases/master/transparentDataEncryption/Current
+- /subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/databases/master/vulnerabilityAssessments/Default
+- /subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/databases/p1sqldatabase/advancedThreatProtectionSettings/Default
+- /subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/databases/p1sqldatabase/auditingPolicies/Default
+- /subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/databases/p1sqldatabase/auditingSettings/Default
+- /subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/databases/p1sqldatabase/backupLongTermRetentionPolicies/default
+- /subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/databases/p1sqldatabase/backupShortTermRetentionPolicies/default
+- /subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/databases/p1sqldatabase/geoBackupPolicies/Default
+- /subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/databases/p1sqldatabase/ledgerDigestUploads/Current
+- /subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/databases/p1sqldatabase/securityAlertPolicies/Default
+- /subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/databases/p1sqldatabase/transparentDataEncryption/Current
+- /subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/databases/p1sqldatabase/vulnerabilityAssessments/Default
+- /subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/keys/ServiceManaged
+- /subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/sqlVulnerabilityAssessments/Default
+- /subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Storage/storageAccounts/p1datastore/blobServices/default
+- /subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Storage/storageAccounts/p1datastore/fileServices/default
+- /subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Storage/storageAccounts/p1datastore/queueServices/default
+- /subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Storage/storageAccounts/p1datastore/tableServices/default
