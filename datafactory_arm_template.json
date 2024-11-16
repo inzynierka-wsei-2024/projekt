@@ -1,0 +1,1347 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "factoryName": {
+            "type": "string",
+            "metadata": "Data Factory name",
+            "defaultValue": "japan-datafactory"
+        },
+        "AzureBlobStorage_connectionString": {
+            "type": "secureString",
+            "metadata": "Secure string for 'connectionString' of 'AzureBlobStorage'"
+        },
+        "SqlServer1_password": {
+            "type": "secureString",
+            "metadata": "Secure string for 'password' of 'SqlServer1'"
+        },
+        "SqlServer1_properties_typeProperties_server": {
+            "type": "string",
+            "defaultValue": "japandbserver.database.windows.net"
+        },
+        "SqlServer1_properties_typeProperties_database": {
+            "type": "string",
+            "defaultValue": "japan"
+        },
+        "SqlServer1_properties_typeProperties_userName": {
+            "type": "string",
+            "defaultValue": "japanadmin"
+        }
+    },
+    "variables": {
+        "factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+    },
+    "resources": [
+        {
+            "name": "[concat(parameters('factoryName'), '/pipeline2')]",
+            "type": "Microsoft.DataFactory/factories/pipelines",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "activities": [
+                    {
+                        "name": "forEachParentTable",
+                        "type": "ForEach",
+                        "dependsOn": [],
+                        "userProperties": [],
+                        "typeProperties": {
+                            "items": {
+                                "value": "@variables('columnsNames')",
+                                "type": "Expression"
+                            },
+                            "activities": [
+                                {
+                                    "name": "japanAddNewValuesToParentTable",
+                                    "type": "ExecuteDataFlow",
+                                    "dependsOn": [
+                                        {
+                                            "activity": "switchSetCurrentTableName",
+                                            "dependencyConditions": [
+                                                "Succeeded"
+                                            ]
+                                        }
+                                    ],
+                                    "policy": {
+                                        "timeout": "0.12:00:00",
+                                        "retry": 0,
+                                        "retryIntervalInSeconds": 30,
+                                        "secureOutput": false,
+                                        "secureInput": false
+                                    },
+                                    "userProperties": [],
+                                    "typeProperties": {
+                                        "dataflow": {
+                                            "referenceName": "japanAddNewValuesToParentTable",
+                                            "type": "DataFlowReference",
+                                            "parameters": {
+                                                "transactionsTableColumnName": {
+                                                    "value": "'@{item()}'",
+                                                    "type": "Expression"
+                                                },
+                                                "parentTableDataColumnName": {
+                                                    "value": "'@{variables('currentParentTableDataColumnName')}'",
+                                                    "type": "Expression"
+                                                }
+                                            },
+                                            "datasetParameters": {
+                                                "getToyamaPrefecture": {},
+                                                "getExistingRealEstateTypes": {
+                                                    "TableName": {
+                                                        "value": "@variables('currentTableName')",
+                                                        "type": "Expression"
+                                                    }
+                                                },
+                                                "load": {
+                                                    "TableName": {
+                                                        "value": "@variables('currentTableName')",
+                                                        "type": "Expression"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "staging": {},
+                                        "compute": {
+                                            "coreCount": 8,
+                                            "computeType": "General"
+                                        },
+                                        "traceLevel": "Fine"
+                                    }
+                                },
+                                {
+                                    "name": "switchSetCurrentTableName",
+                                    "type": "Switch",
+                                    "dependsOn": [],
+                                    "userProperties": [],
+                                    "typeProperties": {
+                                        "on": {
+                                            "value": "@item()",
+                                            "type": "Expression"
+                                        },
+                                        "cases": [
+                                            {
+                                                "value": "City",
+                                                "activities": [
+                                                    {
+                                                        "name": "setTableName1",
+                                                        "type": "SetVariable",
+                                                        "dependsOn": [],
+                                                        "policy": {
+                                                            "secureOutput": false,
+                                                            "secureInput": false
+                                                        },
+                                                        "userProperties": [],
+                                                        "typeProperties": {
+                                                            "variableName": "currentTableName",
+                                                            "value": "\"Cities\""
+                                                        }
+                                                    },
+                                                    {
+                                                        "name": "setColumnName1",
+                                                        "type": "SetVariable",
+                                                        "dependsOn": [
+                                                            {
+                                                                "activity": "setTableName1",
+                                                                "dependencyConditions": [
+                                                                    "Succeeded"
+                                                                ]
+                                                            }
+                                                        ],
+                                                        "policy": {
+                                                            "secureOutput": false,
+                                                            "secureInput": false
+                                                        },
+                                                        "userProperties": [],
+                                                        "typeProperties": {
+                                                            "variableName": "currentParentTableDataColumnName",
+                                                            "value": "\"Name\""
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "value": "FrontageRoadDirection",
+                                                "activities": [
+                                                    {
+                                                        "name": "setTableName2",
+                                                        "type": "SetVariable",
+                                                        "dependsOn": [],
+                                                        "policy": {
+                                                            "secureOutput": false,
+                                                            "secureInput": false
+                                                        },
+                                                        "userProperties": [],
+                                                        "typeProperties": {
+                                                            "variableName": "currentTableName",
+                                                            "value": "'Directions'"
+                                                        }
+                                                    },
+                                                    {
+                                                        "name": "setColumnName2",
+                                                        "type": "SetVariable",
+                                                        "dependsOn": [
+                                                            {
+                                                                "activity": "setTableName2",
+                                                                "dependencyConditions": [
+                                                                    "Succeeded"
+                                                                ]
+                                                            }
+                                                        ],
+                                                        "policy": {
+                                                            "secureOutput": false,
+                                                            "secureInput": false
+                                                        },
+                                                        "userProperties": [],
+                                                        "typeProperties": {
+                                                            "variableName": "currentParentTableDataColumnName",
+                                                            "value": "\"Name\""
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "value": "District",
+                                                "activities": [
+                                                    {
+                                                        "name": "setTableName3",
+                                                        "type": "SetVariable",
+                                                        "dependsOn": [],
+                                                        "policy": {
+                                                            "secureOutput": false,
+                                                            "secureInput": false
+                                                        },
+                                                        "userProperties": [],
+                                                        "typeProperties": {
+                                                            "variableName": "currentTableName",
+                                                            "value": "'Districts'"
+                                                        }
+                                                    },
+                                                    {
+                                                        "name": "setColumnName3",
+                                                        "type": "SetVariable",
+                                                        "dependsOn": [
+                                                            {
+                                                                "activity": "setTableName3",
+                                                                "dependencyConditions": [
+                                                                    "Succeeded"
+                                                                ]
+                                                            }
+                                                        ],
+                                                        "policy": {
+                                                            "secureOutput": false,
+                                                            "secureInput": false
+                                                        },
+                                                        "userProperties": [],
+                                                        "typeProperties": {
+                                                            "variableName": "currentParentTableDataColumnName",
+                                                            "value": "\"Name\""
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "value": "FloorPlan",
+                                                "activities": [
+                                                    {
+                                                        "name": "setTableName4",
+                                                        "type": "SetVariable",
+                                                        "dependsOn": [],
+                                                        "policy": {
+                                                            "secureOutput": false,
+                                                            "secureInput": false
+                                                        },
+                                                        "userProperties": [],
+                                                        "typeProperties": {
+                                                            "variableName": "currentTableName",
+                                                            "value": "'FloorPlans'"
+                                                        }
+                                                    },
+                                                    {
+                                                        "name": "setColumnName4",
+                                                        "type": "SetVariable",
+                                                        "dependsOn": [
+                                                            {
+                                                                "activity": "setTableName4",
+                                                                "dependencyConditions": [
+                                                                    "Succeeded"
+                                                                ]
+                                                            }
+                                                        ],
+                                                        "policy": {
+                                                            "secureOutput": false,
+                                                            "secureInput": false
+                                                        },
+                                                        "userProperties": [],
+                                                        "typeProperties": {
+                                                            "variableName": "currentParentTableDataColumnName",
+                                                            "value": "\"Type\""
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "value": "FrontageRoadType",
+                                                "activities": [
+                                                    {
+                                                        "name": "setTableName5",
+                                                        "type": "SetVariable",
+                                                        "dependsOn": [],
+                                                        "policy": {
+                                                            "secureOutput": false,
+                                                            "secureInput": false
+                                                        },
+                                                        "userProperties": [],
+                                                        "typeProperties": {
+                                                            "variableName": "currentTableName",
+                                                            "value": "\"FrontageRoadTypes\""
+                                                        }
+                                                    },
+                                                    {
+                                                        "name": "setColumnName5",
+                                                        "type": "SetVariable",
+                                                        "dependsOn": [
+                                                            {
+                                                                "activity": "setTableName5",
+                                                                "dependencyConditions": [
+                                                                    "Succeeded"
+                                                                ]
+                                                            }
+                                                        ],
+                                                        "policy": {
+                                                            "secureOutput": false,
+                                                            "secureInput": false
+                                                        },
+                                                        "userProperties": [],
+                                                        "typeProperties": {
+                                                            "variableName": "currentParentTableDataColumnName",
+                                                            "value": "\"Type\""
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "value": "LandShape",
+                                                "activities": [
+                                                    {
+                                                        "name": "setTableName6",
+                                                        "type": "SetVariable",
+                                                        "dependsOn": [],
+                                                        "policy": {
+                                                            "secureOutput": false,
+                                                            "secureInput": false
+                                                        },
+                                                        "userProperties": [],
+                                                        "typeProperties": {
+                                                            "variableName": "currentTableName",
+                                                            "value": "\"LandShapes\""
+                                                        }
+                                                    },
+                                                    {
+                                                        "name": "setColumnName6",
+                                                        "type": "SetVariable",
+                                                        "dependsOn": [
+                                                            {
+                                                                "activity": "setTableName6",
+                                                                "dependencyConditions": [
+                                                                    "Succeeded"
+                                                                ]
+                                                            }
+                                                        ],
+                                                        "policy": {
+                                                            "secureOutput": false,
+                                                            "secureInput": false
+                                                        },
+                                                        "userProperties": [],
+                                                        "typeProperties": {
+                                                            "variableName": "currentParentTableDataColumnName",
+                                                            "value": "\"Name\""
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "value": "PlannigType",
+                                                "activities": [
+                                                    {
+                                                        "name": "setTableName7",
+                                                        "type": "SetVariable",
+                                                        "dependsOn": [],
+                                                        "policy": {
+                                                            "secureOutput": false,
+                                                            "secureInput": false
+                                                        },
+                                                        "userProperties": [],
+                                                        "typeProperties": {
+                                                            "variableName": "currentTableName",
+                                                            "value": "PlanningTypes"
+                                                        }
+                                                    },
+                                                    {
+                                                        "name": "setColumnName7",
+                                                        "type": "SetVariable",
+                                                        "dependsOn": [
+                                                            {
+                                                                "activity": "setTableName7",
+                                                                "dependencyConditions": [
+                                                                    "Succeeded"
+                                                                ]
+                                                            }
+                                                        ],
+                                                        "policy": {
+                                                            "secureOutput": false,
+                                                            "secureInput": false
+                                                        },
+                                                        "userProperties": [],
+                                                        "typeProperties": {
+                                                            "variableName": "currentParentTableDataColumnName",
+                                                            "value": "\"Type\""
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "value": "Prefecture",
+                                                "activities": [
+                                                    {
+                                                        "name": "setTableName8",
+                                                        "description": "\"Prefectures\"",
+                                                        "type": "SetVariable",
+                                                        "dependsOn": [],
+                                                        "policy": {
+                                                            "secureOutput": false,
+                                                            "secureInput": false
+                                                        },
+                                                        "userProperties": [],
+                                                        "typeProperties": {
+                                                            "variableName": "currentTableName",
+                                                            "value": "\"Prefectures\""
+                                                        }
+                                                    },
+                                                    {
+                                                        "name": "setColumnName8",
+                                                        "type": "SetVariable",
+                                                        "dependsOn": [
+                                                            {
+                                                                "activity": "setTableName8",
+                                                                "dependencyConditions": [
+                                                                    "Succeeded"
+                                                                ]
+                                                            }
+                                                        ],
+                                                        "policy": {
+                                                            "secureOutput": false,
+                                                            "secureInput": false
+                                                        },
+                                                        "userProperties": [],
+                                                        "typeProperties": {
+                                                            "variableName": "currentParentTableDataColumnName",
+                                                            "value": "\"Name\""
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "value": "RealEstateType",
+                                                "activities": [
+                                                    {
+                                                        "name": "setTableName9",
+                                                        "type": "SetVariable",
+                                                        "dependsOn": [],
+                                                        "policy": {
+                                                            "secureOutput": false,
+                                                            "secureInput": false
+                                                        },
+                                                        "userProperties": [],
+                                                        "typeProperties": {
+                                                            "variableName": "currentTableName",
+                                                            "value": "RealEstateTypes"
+                                                        }
+                                                    },
+                                                    {
+                                                        "name": "setColumnName9",
+                                                        "type": "SetVariable",
+                                                        "dependsOn": [
+                                                            {
+                                                                "activity": "setTableName9",
+                                                                "dependencyConditions": [
+                                                                    "Succeeded"
+                                                                ]
+                                                            }
+                                                        ],
+                                                        "policy": {
+                                                            "secureOutput": false,
+                                                            "secureInput": false
+                                                        },
+                                                        "userProperties": [],
+                                                        "typeProperties": {
+                                                            "variableName": "currentParentTableDataColumnName",
+                                                            "value": "\"Type\""
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "value": "Region",
+                                                "activities": [
+                                                    {
+                                                        "name": "setTableName10",
+                                                        "type": "SetVariable",
+                                                        "dependsOn": [],
+                                                        "policy": {
+                                                            "secureOutput": false,
+                                                            "secureInput": false
+                                                        },
+                                                        "userProperties": [],
+                                                        "typeProperties": {
+                                                            "variableName": "currentTableName",
+                                                            "value": "Regions"
+                                                        }
+                                                    },
+                                                    {
+                                                        "name": "setColumnaName10",
+                                                        "type": "SetVariable",
+                                                        "dependsOn": [
+                                                            {
+                                                                "activity": "setTableName10",
+                                                                "dependencyConditions": [
+                                                                    "Succeeded"
+                                                                ]
+                                                            }
+                                                        ],
+                                                        "policy": {
+                                                            "secureOutput": false,
+                                                            "secureInput": false
+                                                        },
+                                                        "userProperties": [],
+                                                        "typeProperties": {
+                                                            "variableName": "currentParentTableDataColumnName",
+                                                            "value": "\"Name\""
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "value": "NearestStation",
+                                                "activities": [
+                                                    {
+                                                        "name": "setTableName11",
+                                                        "type": "SetVariable",
+                                                        "dependsOn": [],
+                                                        "policy": {
+                                                            "secureOutput": false,
+                                                            "secureInput": false
+                                                        },
+                                                        "userProperties": [],
+                                                        "typeProperties": {
+                                                            "variableName": "currentTableName",
+                                                            "value": "Stations"
+                                                        }
+                                                    },
+                                                    {
+                                                        "name": "setColumnName11",
+                                                        "type": "SetVariable",
+                                                        "dependsOn": [
+                                                            {
+                                                                "activity": "setTableName11",
+                                                                "dependencyConditions": [
+                                                                    "Succeeded"
+                                                                ]
+                                                            }
+                                                        ],
+                                                        "policy": {
+                                                            "secureOutput": false,
+                                                            "secureInput": false
+                                                        },
+                                                        "userProperties": [],
+                                                        "typeProperties": {
+                                                            "variableName": "currentParentTableDataColumnName",
+                                                            "value": "\"Name\""
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "value": "Structure",
+                                                "activities": [
+                                                    {
+                                                        "name": "setTableName12",
+                                                        "type": "SetVariable",
+                                                        "dependsOn": [],
+                                                        "policy": {
+                                                            "secureOutput": false,
+                                                            "secureInput": false
+                                                        },
+                                                        "userProperties": [],
+                                                        "typeProperties": {
+                                                            "variableName": "currentTableName",
+                                                            "value": "Structures"
+                                                        }
+                                                    },
+                                                    {
+                                                        "name": "setColumnName12",
+                                                        "type": "SetVariable",
+                                                        "dependsOn": [
+                                                            {
+                                                                "activity": "setTableName12",
+                                                                "dependencyConditions": [
+                                                                    "Succeeded"
+                                                                ]
+                                                            }
+                                                        ],
+                                                        "policy": {
+                                                            "secureOutput": false,
+                                                            "secureInput": false
+                                                        },
+                                                        "userProperties": [],
+                                                        "typeProperties": {
+                                                            "variableName": "currentParentTableDataColumnName",
+                                                            "value": "\"Name\""
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "value": "CurrentUsage",
+                                                "activities": [
+                                                    {
+                                                        "name": "setTableName13",
+                                                        "type": "SetVariable",
+                                                        "dependsOn": [],
+                                                        "policy": {
+                                                            "secureOutput": false,
+                                                            "secureInput": false
+                                                        },
+                                                        "userProperties": [],
+                                                        "typeProperties": {
+                                                            "variableName": "currentTableName",
+                                                            "value": "\"UsageTypes\""
+                                                        }
+                                                    },
+                                                    {
+                                                        "name": "setColumnName13",
+                                                        "type": "SetVariable",
+                                                        "dependsOn": [
+                                                            {
+                                                                "activity": "setTableName13",
+                                                                "dependencyConditions": [
+                                                                    "Succeeded"
+                                                                ]
+                                                            }
+                                                        ],
+                                                        "policy": {
+                                                            "secureOutput": false,
+                                                            "secureInput": false
+                                                        },
+                                                        "userProperties": [],
+                                                        "typeProperties": {
+                                                            "variableName": "currentParentTableDataColumnName",
+                                                            "value": "\"Type\""
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "value": "PostTransactionUsage",
+                                                "activities": [
+                                                    {
+                                                        "name": "setTableName14",
+                                                        "type": "SetVariable",
+                                                        "dependsOn": [],
+                                                        "policy": {
+                                                            "secureOutput": false,
+                                                            "secureInput": false
+                                                        },
+                                                        "userProperties": [],
+                                                        "typeProperties": {
+                                                            "variableName": "currentTableName",
+                                                            "value": "UsageTypes"
+                                                        }
+                                                    },
+                                                    {
+                                                        "name": "setColumnaName14",
+                                                        "type": "SetVariable",
+                                                        "dependsOn": [
+                                                            {
+                                                                "activity": "setTableName14",
+                                                                "dependencyConditions": [
+                                                                    "Succeeded"
+                                                                ]
+                                                            }
+                                                        ],
+                                                        "policy": {
+                                                            "secureOutput": false,
+                                                            "secureInput": false
+                                                        },
+                                                        "userProperties": [],
+                                                        "typeProperties": {
+                                                            "variableName": "currentParentTableDataColumnName",
+                                                            "value": "\"Type\""
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "policy": {
+                    "elapsedTimeMetric": {}
+                },
+                "variables": {
+                    "columnsNames": {
+                        "type": "Array",
+                        "defaultValue": [
+                            "City",
+                            "FrontageRoadDirection",
+                            "District",
+                            "FloorPlan",
+                            "FrontageRoadType",
+                            "LandShape",
+                            "PlannigType",
+                            "Prefecture",
+                            "RealEstateType",
+                            "Region",
+                            "NearestStation",
+                            "Structure",
+                            "CurrentUsage",
+                            "PostTransactionUsage"
+                        ]
+                    },
+                    "currentTableName": {
+                        "type": "String",
+                        "defaultValue": "\"\""
+                    },
+                    "currentParentTableDataColumnName": {
+                        "type": "String",
+                        "defaultValue": "\"\""
+                    }
+                },
+                "annotations": [],
+                "lastPublishTime": "2024-11-11T02:38:20Z"
+            },
+            "dependsOn": [
+                "[concat(variables('factoryId'), '/dataflows/japanAddNewValuesToParentTable')]"
+            ]
+        },
+		 {
+            "name": "[concat(parameters('factoryName'), '/SQLPropertiesTable')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "SqlServer1",
+                    "type": "LinkedServiceReference"
+                },
+                "annotations": [],
+                "type": "SqlServerTable",
+                "schema": [
+                    {
+                        "name": "Id",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "StateId",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "CityId",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "TypeId",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Address",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "ZipCode",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LivingArea",
+                        "type": "float",
+                        "precision": 15
+                    },
+                    {
+                        "name": "Bedrooms",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "Bathrooms",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "ZillowEstimate",
+                        "type": "money",
+                        "precision": 19,
+                        "scale": 4
+                    },
+                    {
+                        "name": "TaxBase",
+                        "type": "money",
+                        "precision": 19,
+                        "scale": 4
+                    },
+                    {
+                        "name": "LandValuation",
+                        "type": "money",
+                        "precision": 19,
+                        "scale": 4
+                    },
+                    {
+                        "name": "Price",
+                        "type": "money",
+                        "precision": 19,
+                        "scale": 4
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "Properties"
+                }
+            },
+            "dependsOn": [
+                "[concat(variables('factoryId'), '/linkedServices/SqlServer1')]"
+            ]
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/AzureBlobStorage')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureBlobStorage",
+                "typeProperties": {
+                    "connectionString": "[parameters('AzureBlobStorage_connectionString')]"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SqlServer1')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "SqlServer",
+                "typeProperties": {
+                    "server": "[parameters('SqlServer1_properties_typeProperties_server')]",
+                    "database": "[parameters('SqlServer1_properties_typeProperties_database')]",
+                    "encrypt": "mandatory",
+                    "trustServerCertificate": false,
+                    "authenticationType": "SQL",
+                    "userName": "[parameters('SqlServer1_properties_typeProperties_userName')]",
+                    "password": {
+                        "type": "SecureString",
+                        "value": "[parameters('SqlServer1_password')]"
+                    }
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/toyama_blob')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "AzureBlobStorage",
+                    "type": "LinkedServiceReference"
+                },
+                "annotations": [],
+                "type": "Json",
+                "typeProperties": {
+                    "location": {
+                        "type": "AzureBlobStorageLocation",
+                        "container": "japan-toyama-prefecture"
+                    }
+                },
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                        "No": {
+                            "type": "integer"
+                        },
+                        "Type": {
+                            "type": "string"
+                        },
+                        "Region": {
+                            "type": "string"
+                        },
+                        "MunicipalityCode": {
+                            "type": "integer"
+                        },
+                        "Prefecture": {
+                            "type": "string"
+                        },
+                        "Municipality": {
+                            "type": "string"
+                        },
+                        "DistrictName": {
+                            "type": "string"
+                        },
+                        "NearestStation": {
+                            "type": "string"
+                        },
+                        "TimeToNearestStation": {
+                            "type": "string"
+                        },
+                        "MinTimeToNearestStation": {
+                            "type": "integer"
+                        },
+                        "MaxTimeToNearestStation": {
+                            "type": "integer"
+                        },
+                        "TradePrice": {
+                            "type": "integer"
+                        },
+                        "FloorPlan": {
+                            "type": "string"
+                        },
+                        "Area": {
+                            "type": "integer"
+                        },
+                        "AreaIsGreaterFlag": {
+                            "type": "integer"
+                        },
+                        "UnitPrice": {
+                            "type": "integer"
+                        },
+                        "PricePerTsubo": {
+                            "type": "integer"
+                        },
+                        "LandShape": {
+                            "type": "string"
+                        },
+                        "Frontage": {
+                            "type": "number"
+                        },
+                        "FrontageIsGreaterFlag": {
+                            "type": "boolean"
+                        },
+                        "TotalFloorArea": {
+                            "type": "integer"
+                        },
+                        "TotalFloorAreaIsGreaterFlag": {
+                            "type": "integer"
+                        },
+                        "BuildingYear": {
+                            "type": "integer"
+                        },
+                        "PrewarBuilding": {
+                            "type": "integer"
+                        },
+                        "Structure": {
+                            "type": "string"
+                        },
+                        "Use": {
+                            "type": "string"
+                        },
+                        "Purpose": {
+                            "type": "string"
+                        },
+                        "Direction": {
+                            "type": "string"
+                        },
+                        "Classification": {
+                            "type": "string"
+                        },
+                        "Breadth": {
+                            "type": "number"
+                        },
+                        "CityPlanning": {
+                            "type": "string"
+                        },
+                        "CoverageRatio": {
+                            "type": "integer"
+                        },
+                        "FloorAreaRatio": {
+                            "type": "integer"
+                        },
+                        "Period": {
+                            "type": "string"
+                        },
+                        "Year": {
+                            "type": "integer"
+                        },
+                        "Quarter": {
+                            "type": "integer"
+                        },
+                        "Renovation": {
+                            "type": "string"
+                        },
+                        "Remarks": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "dependsOn": [
+                "[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage')]"
+            ]
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/RealEstateTypesTable')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "SqlServer1",
+                    "type": "LinkedServiceReference"
+                },
+                "parameters": {
+                    "TableName": {
+                        "type": "string"
+                    }
+                },
+                "annotations": [],
+                "type": "SqlServerTable",
+                "schema": [
+                    {
+                        "name": "ID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "Type",
+                        "type": "nvarchar"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": {
+                        "value": "@dataset().TableName",
+                        "type": "Expression"
+                    }
+                }
+            },
+            "dependsOn": [
+                "[concat(variables('factoryId'), '/linkedServices/SqlServer1')]"
+            ]
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/japanDataflow')]",
+            "type": "Microsoft.DataFactory/factories/dataflows",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "type": "MappingDataFlow",
+                "typeProperties": {
+                    "sources": [
+                        {
+                            "dataset": {
+                                "referenceName": "toyama_blob",
+                                "type": "DatasetReference"
+                            },
+                            "name": "getToyamaPrefecture"
+                        },
+                        {
+                            "dataset": {
+                                "referenceName": "RealEstateTypesTable",
+                                "type": "DatasetReference"
+                            },
+                            "name": "getExistingRealEstateTypes"
+                        }
+                    ],
+                    "sinks": [
+                        {
+                            "dataset": {
+                                "referenceName": "SQLPropertiesTable",
+                                "type": "DatasetReference"
+                            },
+                            "name": "load"
+                        }
+                    ],
+                    "transformations": [
+                        {
+                            "name": "filterColumns"
+                        },
+                        {
+                            "name": "lookup1"
+                        }
+                    ],
+                    "scriptLines": [
+                        "source(output(",
+                        "          No as integer,",
+                        "          Type as string,",
+                        "          Region as string,",
+                        "          MunicipalityCode as integer,",
+                        "          Prefecture as string,",
+                        "          Municipality as string,",
+                        "          DistrictName as string,",
+                        "          NearestStation as string,",
+                        "          TimeToNearestStation as string,",
+                        "          MinTimeToNearestStation as integer,",
+                        "          MaxTimeToNearestStation as integer,",
+                        "          TradePrice as integer,",
+                        "          FloorPlan as string,",
+                        "          Area as integer,",
+                        "          AreaIsGreaterFlag as integer,",
+                        "          UnitPrice as integer,",
+                        "          PricePerTsubo as integer,",
+                        "          LandShape as string,",
+                        "          Frontage as double,",
+                        "          FrontageIsGreaterFlag as boolean,",
+                        "          TotalFloorArea as integer,",
+                        "          TotalFloorAreaIsGreaterFlag as integer,",
+                        "          BuildingYear as integer,",
+                        "          PrewarBuilding as integer,",
+                        "          Structure as string,",
+                        "          Use as string,",
+                        "          Purpose as string,",
+                        "          Direction as string,",
+                        "          Classification as string,",
+                        "          Breadth as double,",
+                        "          CityPlanning as string,",
+                        "          CoverageRatio as integer,",
+                        "          FloorAreaRatio as integer,",
+                        "          Period as string,",
+                        "          Year as integer,",
+                        "          Quarter as integer,",
+                        "          Renovation as string,",
+                        "          Remarks as string",
+                        "     ),",
+                        "     allowSchemaDrift: true,",
+                        "     validateSchema: false,",
+                        "     ignoreNoFilesFound: false,",
+                        "     documentForm: 'arrayOfDocuments') ~> getToyamaPrefecture",
+                        "source(output(",
+                        "          ID as integer,",
+                        "          Type as string",
+                        "     ),",
+                        "     allowSchemaDrift: true,",
+                        "     validateSchema: false,",
+                        "     isolationLevel: 'READ_UNCOMMITTED',",
+                        "     format: 'table') ~> getExistingRealEstateTypes",
+                        "getToyamaPrefecture select(mapColumn(",
+                        "          No,",
+                        "          RealEstateType = Type,",
+                        "          Region,",
+                        "          Prefecture,",
+                        "          City = Municipality,",
+                        "          District = DistrictName,",
+                        "          NearestStation,",
+                        "          TimeToNearestStation,",
+                        "          MinTimeToNearestStation,",
+                        "          MaxTimeToNearestStation,",
+                        "          Price = TradePrice,",
+                        "          UnitPrice,",
+                        "          FloorPlan,",
+                        "          Area,",
+                        "          GreatArea = AreaIsGreaterFlag,",
+                        "          FloorArea = TotalFloorArea,",
+                        "          GreatFloorArea = TotalFloorAreaIsGreaterFlag,",
+                        "          Frontage,",
+                        "          GreatFrontage = FrontageIsGreaterFlag,",
+                        "          FrontRoadBreadth = Classification,",
+                        "          FrontageRoadDirection = Direction,",
+                        "          FrontageRoadBreadth = Breadth,",
+                        "          LandShape,",
+                        "          BuildingYear,",
+                        "          PrewarBuilding,",
+                        "          Structure,",
+                        "          CurrentUsage = Use,",
+                        "          PostTransactionUsage = Purpose,",
+                        "          PlanningType = CityPlanning,",
+                        "          MaximumBuildingCoverageRatio = CoverageRatio,",
+                        "          TransactionYear = Year,",
+                        "          TransactionQuarter = Quarter",
+                        "     ),",
+                        "     skipDuplicateMapInputs: true,",
+                        "     skipDuplicateMapOutputs: true) ~> filterColumns",
+                        "filterColumns, getExistingRealEstateTypes lookup(RealEstateType == Type,",
+                        "     multiple: true,",
+                        "     broadcast: 'auto')~> lookup1",
+                        "lookup1 sink(allowSchemaDrift: true,",
+                        "     validateSchema: false,",
+                        "     input(",
+                        "          Id as integer,",
+                        "          StateId as string,",
+                        "          CityId as string,",
+                        "          TypeId as string,",
+                        "          Address as string,",
+                        "          ZipCode as string,",
+                        "          LivingArea as double,",
+                        "          Bedrooms as integer,",
+                        "          Bathrooms as integer,",
+                        "          ZillowEstimate as decimal(19,4),",
+                        "          TaxBase as decimal(19,4),",
+                        "          LandValuation as decimal(19,4),",
+                        "          Price as decimal(19,4)",
+                        "     ),",
+                        "     deletable:false,",
+                        "     insertable:true,",
+                        "     updateable:false,",
+                        "     upsertable:false,",
+                        "     format: 'table',",
+                        "     skipDuplicateMapInputs: true,",
+                        "     skipDuplicateMapOutputs: true) ~> load"
+                    ]
+                }
+            },
+            "dependsOn": [
+                "[concat(variables('factoryId'), '/datasets/toyama_blob')]",
+                "[concat(variables('factoryId'), '/datasets/RealEstateTypesTable')]",
+                "[concat(variables('factoryId'), '/datasets/SQLPropertiesTable')]"
+            ]
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/japanAddNewValuesToParentTable')]",
+            "type": "Microsoft.DataFactory/factories/dataflows",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "type": "MappingDataFlow",
+                "typeProperties": {
+                    "sources": [
+                        {
+                            "dataset": {
+                                "referenceName": "toyama_blob",
+                                "type": "DatasetReference"
+                            },
+                            "name": "getToyamaPrefecture"
+                        },
+                        {
+                            "dataset": {
+                                "referenceName": "RealEstateTypesTable",
+                                "type": "DatasetReference"
+                            },
+                            "name": "getExistingRealEstateTypes"
+                        }
+                    ],
+                    "sinks": [
+                        {
+                            "dataset": {
+                                "referenceName": "RealEstateTypesTable",
+                                "type": "DatasetReference"
+                            },
+                            "name": "load"
+                        }
+                    ],
+                    "transformations": [
+                        {
+                            "name": "filterColumns"
+                        },
+                        {
+                            "name": "joinExisting"
+                        },
+                        {
+                            "name": "filterNulls"
+                        },
+                        {
+                            "name": "aggregateResults"
+                        }
+                    ],
+                    "scriptLines": [
+                        "parameters{",
+                        "     transactionsTableColumnName as string,",
+                        "     parentTableDataColumnName as string",
+                        "}",
+                        "source(output(",
+                        "          No as integer,",
+                        "          Type as string,",
+                        "          Region as string,",
+                        "          MunicipalityCode as integer,",
+                        "          Prefecture as string,",
+                        "          Municipality as string,",
+                        "          DistrictName as string,",
+                        "          NearestStation as string,",
+                        "          TimeToNearestStation as string,",
+                        "          MinTimeToNearestStation as integer,",
+                        "          MaxTimeToNearestStation as integer,",
+                        "          TradePrice as integer,",
+                        "          FloorPlan as string,",
+                        "          Area as integer,",
+                        "          AreaIsGreaterFlag as integer,",
+                        "          UnitPrice as integer,",
+                        "          PricePerTsubo as integer,",
+                        "          LandShape as string,",
+                        "          Frontage as double,",
+                        "          FrontageIsGreaterFlag as boolean,",
+                        "          TotalFloorArea as integer,",
+                        "          TotalFloorAreaIsGreaterFlag as integer,",
+                        "          BuildingYear as integer,",
+                        "          PrewarBuilding as integer,",
+                        "          Structure as string,",
+                        "          Use as string,",
+                        "          Purpose as string,",
+                        "          Direction as string,",
+                        "          Classification as string,",
+                        "          Breadth as double,",
+                        "          CityPlanning as string,",
+                        "          CoverageRatio as integer,",
+                        "          FloorAreaRatio as integer,",
+                        "          Period as string,",
+                        "          Year as integer,",
+                        "          Quarter as integer,",
+                        "          Renovation as string,",
+                        "          Remarks as string",
+                        "     ),",
+                        "     allowSchemaDrift: true,",
+                        "     validateSchema: false,",
+                        "     ignoreNoFilesFound: false,",
+                        "     documentForm: 'arrayOfDocuments') ~> getToyamaPrefecture",
+                        "source(output(",
+                        "          ID as integer,",
+                        "          Type as string",
+                        "     ),",
+                        "     allowSchemaDrift: true,",
+                        "     validateSchema: false,",
+                        "     isolationLevel: 'READ_UNCOMMITTED',",
+                        "     format: 'table') ~> getExistingRealEstateTypes",
+                        "getToyamaPrefecture select(mapColumn(",
+                        "          No,",
+                        "          RealEstateType = Type,",
+                        "          Region,",
+                        "          Prefecture,",
+                        "          City = Municipality,",
+                        "          District = DistrictName,",
+                        "          NearestStation,",
+                        "          FloorPlan,",
+                        "          FrontageRoadType = Classification,",
+                        "          FrontageRoadDirection = Direction,",
+                        "          LandShape,",
+                        "          Structure,",
+                        "          CurrentUsage = Use,",
+                        "          PostTransactionUsage = Purpose,",
+                        "          PlanningType = CityPlanning",
+                        "     ),",
+                        "     skipDuplicateMapInputs: true,",
+                        "     skipDuplicateMapOutputs: true) ~> filterColumns",
+                        "filterColumns, getExistingRealEstateTypes lookup($transactionsTableColumnName == $parentTableDataColumnName,",
+                        "     multiple: true,",
+                        "     broadcast: 'right')~> joinExisting",
+                        "joinExisting filter(isNull(ID)) ~> filterNulls",
+                        "filterNulls aggregate(groupBy(dataName = $transactionsTableColumnName),",
+                        "     helper = count($transactionsTableColumnName)) ~> aggregateResults",
+                        "aggregateResults sink(allowSchemaDrift: true,",
+                        "     validateSchema: false,",
+                        "     input(",
+                        "          ID as integer,",
+                        "          Type as string",
+                        "     ),",
+                        "     deletable:false,",
+                        "     insertable:true,",
+                        "     updateable:false,",
+                        "     upsertable:false,",
+                        "     format: 'table',",
+                        "     skipDuplicateMapInputs: true,",
+                        "     skipDuplicateMapOutputs: true,",
+                        "     mapColumn(",
+                        "          each(patternMatch(`dataName`),",
+                        "               $parentTableDataColumnName = $$)",
+                        "     )) ~> load"
+                    ]
+                }
+            },
+            "dependsOn": [
+                "[concat(variables('factoryId'), '/datasets/toyama_blob')]",
+                "[concat(variables('factoryId'), '/datasets/RealEstateTypesTable')]"
+            ]
+        }
+    ]
+}

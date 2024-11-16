@@ -1,217 +1,112 @@
 {
-	"/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis": {
-		"resource_id": "/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis",
+	"/subscriptions/57f08f70-aba5-4349-b051-84b24560fd89/resourceGroups/japan-real-estate": {
+		"resource_id": "/subscriptions/57f08f70-aba5-4349-b051-84b24560fd89/resourceGroups/japan-real-estate",
 		"resource_type": "azurerm_resource_group",
 		"resource_name": "res-0"
 	},
-	"/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.DataFactory/factories/p1-datafactory": {
-		"resource_id": "/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.DataFactory/factories/p1-datafactory",
+	"/subscriptions/57f08f70-aba5-4349-b051-84b24560fd89/resourceGroups/japan-real-estate/providers/Microsoft.DataFactory/factories/japan-datafactory": {
+		"resource_id": "/subscriptions/57f08f70-aba5-4349-b051-84b24560fd89/resourceGroups/japan-real-estate/providers/Microsoft.DataFactory/factories/japan-datafactory",
 		"resource_type": "azurerm_data_factory",
 		"resource_name": "res-1"
 	},
-	"/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.DataFactory/factories/p1-datafactory/dataflows/dataFlow1": {
-		"resource_id": "/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.DataFactory/factories/p1-datafactory/dataflows/dataFlow1",
+	"/subscriptions/57f08f70-aba5-4349-b051-84b24560fd89/resourceGroups/japan-real-estate/providers/Microsoft.DataFactory/factories/japan-datafactory/dataflows/japanAddNewValuesToParentTable": {
+		"resource_id": "/subscriptions/57f08f70-aba5-4349-b051-84b24560fd89/resourceGroups/japan-real-estate/providers/Microsoft.DataFactory/factories/japan-datafactory/dataflows/japanAddNewValuesToParentTable",
 		"resource_type": "azurerm_data_factory_data_flow",
 		"resource_name": "res-2"
 	},
-	"/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.DataFactory/factories/p1-datafactory/datasets/SQLPropertiesTable": {
-		"resource_id": "/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.DataFactory/factories/p1-datafactory/datasets/SQLPropertiesTable",
-		"resource_type": "azurerm_data_factory_dataset_sql_server_table",
+	"/subscriptions/57f08f70-aba5-4349-b051-84b24560fd89/resourceGroups/japan-real-estate/providers/Microsoft.DataFactory/factories/japan-datafactory/dataflows/japanDataflow": {
+		"resource_id": "/subscriptions/57f08f70-aba5-4349-b051-84b24560fd89/resourceGroups/japan-real-estate/providers/Microsoft.DataFactory/factories/japan-datafactory/dataflows/japanDataflow",
+		"resource_type": "azurerm_data_factory_data_flow",
 		"resource_name": "res-3"
 	},
-	"/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.DataFactory/factories/p1-datafactory/datasets/SanFranciscoJSON": {
-		"resource_id": "/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.DataFactory/factories/p1-datafactory/datasets/SanFranciscoJSON",
-		"resource_type": "azurerm_data_factory_dataset_json",
+	"/subscriptions/57f08f70-aba5-4349-b051-84b24560fd89/resourceGroups/japan-real-estate/providers/Microsoft.DataFactory/factories/japan-datafactory/datasets/RealEstateTypesTable": {
+		"resource_id": "/subscriptions/57f08f70-aba5-4349-b051-84b24560fd89/resourceGroups/japan-real-estate/providers/Microsoft.DataFactory/factories/japan-datafactory/datasets/RealEstateTypesTable",
+		"resource_type": "azurerm_data_factory_dataset_sql_server_table",
 		"resource_name": "res-4"
 	},
-	"/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.DataFactory/factories/p1-datafactory/datasets/chicagoJSON": {
-		"resource_id": "/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.DataFactory/factories/p1-datafactory/datasets/chicagoJSON",
-		"resource_type": "azurerm_data_factory_dataset_json",
+	"/subscriptions/57f08f70-aba5-4349-b051-84b24560fd89/resourceGroups/japan-real-estate/providers/Microsoft.DataFactory/factories/japan-datafactory/datasets/SQLPropertiesTable": {
+		"resource_id": "/subscriptions/57f08f70-aba5-4349-b051-84b24560fd89/resourceGroups/japan-real-estate/providers/Microsoft.DataFactory/factories/japan-datafactory/datasets/SQLPropertiesTable",
+		"resource_type": "azurerm_data_factory_dataset_sql_server_table",
 		"resource_name": "res-5"
 	},
-	"/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.DataFactory/factories/p1-datafactory/datasets/newYorkJSON": {
-		"resource_id": "/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.DataFactory/factories/p1-datafactory/datasets/newYorkJSON",
+	"/subscriptions/57f08f70-aba5-4349-b051-84b24560fd89/resourceGroups/japan-real-estate/providers/Microsoft.DataFactory/factories/japan-datafactory/datasets/toyama_blob": {
+		"resource_id": "/subscriptions/57f08f70-aba5-4349-b051-84b24560fd89/resourceGroups/japan-real-estate/providers/Microsoft.DataFactory/factories/japan-datafactory/datasets/toyama_blob",
 		"resource_type": "azurerm_data_factory_dataset_json",
 		"resource_name": "res-6"
 	},
-	"/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.DataFactory/factories/p1-datafactory/datasets/seattleJSON": {
-		"resource_id": "/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.DataFactory/factories/p1-datafactory/datasets/seattleJSON",
-		"resource_type": "azurerm_data_factory_dataset_json",
+	"/subscriptions/57f08f70-aba5-4349-b051-84b24560fd89/resourceGroups/japan-real-estate/providers/Microsoft.DataFactory/factories/japan-datafactory/linkedservices/AzureBlobStorage": {
+		"resource_id": "/subscriptions/57f08f70-aba5-4349-b051-84b24560fd89/resourceGroups/japan-real-estate/providers/Microsoft.DataFactory/factories/japan-datafactory/linkedservices/AzureBlobStorage",
+		"resource_type": "azurerm_data_factory_linked_service_azure_blob_storage",
 		"resource_name": "res-7"
 	},
-	"/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.DataFactory/factories/p1-datafactory/linkedservices/p1blobstorage": {
-		"resource_id": "/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.DataFactory/factories/p1-datafactory/linkedservices/p1blobstorage",
-		"resource_type": "azurerm_data_factory_linked_service_azure_blob_storage",
+	"/subscriptions/57f08f70-aba5-4349-b051-84b24560fd89/resourceGroups/japan-real-estate/providers/Microsoft.DataFactory/factories/japan-datafactory/linkedservices/SqlServer1": {
+		"resource_id": "/subscriptions/57f08f70-aba5-4349-b051-84b24560fd89/resourceGroups/japan-real-estate/providers/Microsoft.DataFactory/factories/japan-datafactory/linkedservices/SqlServer1",
+		"resource_type": "azurerm_data_factory_linked_service_sql_server",
 		"resource_name": "res-8"
 	},
-	"/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.DataFactory/factories/p1-datafactory/linkedservices/p1datasqlserver": {
-		"resource_id": "/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.DataFactory/factories/p1-datafactory/linkedservices/p1datasqlserver",
-		"resource_type": "azurerm_data_factory_linked_service_sql_server",
+	"/subscriptions/57f08f70-aba5-4349-b051-84b24560fd89/resourceGroups/japan-real-estate/providers/Microsoft.DataFactory/factories/japan-datafactory/pipelines/pipeline2": {
+		"resource_id": "/subscriptions/57f08f70-aba5-4349-b051-84b24560fd89/resourceGroups/japan-real-estate/providers/Microsoft.DataFactory/factories/japan-datafactory/pipelines/pipeline2",
+		"resource_type": "azurerm_data_factory_pipeline",
 		"resource_name": "res-9"
 	},
-	"/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.DataFactory/factories/p1-datafactory/linkedservices/p1sqldatabase": {
-		"resource_id": "/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.DataFactory/factories/p1-datafactory/linkedservices/p1sqldatabase",
-		"resource_type": "azurerm_data_factory_linked_service_azure_sql_database",
+	"/subscriptions/57f08f70-aba5-4349-b051-84b24560fd89/resourceGroups/japan-real-estate/providers/Microsoft.Sql/servers/japandbserver": {
+		"resource_id": "/subscriptions/57f08f70-aba5-4349-b051-84b24560fd89/resourceGroups/japan-real-estate/providers/Microsoft.Sql/servers/japandbserver",
+		"resource_type": "azurerm_mssql_server",
 		"resource_name": "res-10"
 	},
-	"/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.DataFactory/factories/p1-datafactory/pipelines/pipeline1": {
-		"resource_id": "/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.DataFactory/factories/p1-datafactory/pipelines/pipeline1",
-		"resource_type": "azurerm_data_factory_pipeline",
+	"/subscriptions/57f08f70-aba5-4349-b051-84b24560fd89/resourceGroups/japan-real-estate/providers/Microsoft.Sql/servers/japandbserver/administrators/ActiveDirectory": {
+		"resource_id": "/subscriptions/57f08f70-aba5-4349-b051-84b24560fd89/resourceGroups/japan-real-estate/providers/Microsoft.Sql/servers/japandbserver/administrators/ActiveDirectory",
+		"resource_type": "azurerm_sql_active_directory_administrator",
 		"resource_name": "res-11"
 	},
-	"/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.DataFactory/factories/p1-datafactory/triggers/chicago": {
-		"resource_id": "/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.DataFactory/factories/p1-datafactory/triggers/chicago",
-		"resource_type": "azurerm_data_factory_trigger_blob_event",
-		"resource_name": "res-12"
-	},
-	"/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.DataFactory/factories/p1-datafactory/triggers/new-york": {
-		"resource_id": "/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.DataFactory/factories/p1-datafactory/triggers/new-york",
-		"resource_type": "azurerm_data_factory_trigger_blob_event",
-		"resource_name": "res-13"
-	},
-	"/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.DataFactory/factories/p1-datafactory/triggers/san-fran": {
-		"resource_id": "/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.DataFactory/factories/p1-datafactory/triggers/san-fran",
-		"resource_type": "azurerm_data_factory_trigger_blob_event",
-		"resource_name": "res-14"
-	},
-	"/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.DataFactory/factories/p1-datafactory/triggers/seattle": {
-		"resource_id": "/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.DataFactory/factories/p1-datafactory/triggers/seattle",
-		"resource_type": "azurerm_data_factory_trigger_blob_event",
-		"resource_name": "res-15"
-	},
-	"/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.EventGrid/systemTopics/p1datastore-14e9bbc1-b07a-4eaa-b850-e07b4f0f888c": {
-		"resource_id": "/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.EventGrid/systemTopics/p1datastore-14e9bbc1-b07a-4eaa-b850-e07b4f0f888c",
-		"resource_type": "azurerm_eventgrid_system_topic",
-		"resource_name": "res-16"
-	},
-	"/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.EventGrid/systemTopics/p1datastore-14e9bbc1-b07a-4eaa-b850-e07b4f0f888c/eventSubscriptions/1197beac-2e32-062b-3669-ba7ae2ddbf96": {
-		"resource_id": "/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.EventGrid/systemTopics/p1datastore-14e9bbc1-b07a-4eaa-b850-e07b4f0f888c/eventSubscriptions/1197beac-2e32-062b-3669-ba7ae2ddbf96",
-		"resource_type": "azurerm_eventgrid_system_topic_event_subscription",
-		"resource_name": "res-17"
-	},
-	"/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.EventGrid/systemTopics/p1datastore-14e9bbc1-b07a-4eaa-b850-e07b4f0f888c/eventSubscriptions/c57959fa-629f-0f47-692b-54315ff9efa7": {
-		"resource_id": "/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.EventGrid/systemTopics/p1datastore-14e9bbc1-b07a-4eaa-b850-e07b4f0f888c/eventSubscriptions/c57959fa-629f-0f47-692b-54315ff9efa7",
-		"resource_type": "azurerm_eventgrid_system_topic_event_subscription",
-		"resource_name": "res-18"
-	},
-	"/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.EventGrid/systemTopics/p1datastore-14e9bbc1-b07a-4eaa-b850-e07b4f0f888c/eventSubscriptions/d4889400-ff45-cae3-da57-d09196ad9766": {
-		"resource_id": "/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.EventGrid/systemTopics/p1datastore-14e9bbc1-b07a-4eaa-b850-e07b4f0f888c/eventSubscriptions/d4889400-ff45-cae3-da57-d09196ad9766",
-		"resource_type": "azurerm_eventgrid_system_topic_event_subscription",
-		"resource_name": "res-19"
-	},
-	"/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.EventGrid/systemTopics/p1datastore-14e9bbc1-b07a-4eaa-b850-e07b4f0f888c/eventSubscriptions/f3e9ccb9-17a0-23c2-5994-0f13a8db523d": {
-		"resource_id": "/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.EventGrid/systemTopics/p1datastore-14e9bbc1-b07a-4eaa-b850-e07b4f0f888c/eventSubscriptions/f3e9ccb9-17a0-23c2-5994-0f13a8db523d",
-		"resource_type": "azurerm_eventgrid_system_topic_event_subscription",
-		"resource_name": "res-20"
-	},
-	"/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.ManagedIdentity/userAssignedIdentities/p1-data-analysis-mi": {
-		"resource_id": "/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.ManagedIdentity/userAssignedIdentities/p1-data-analysis-mi",
-		"resource_type": "azurerm_user_assigned_identity",
-		"resource_name": "res-21"
-	},
-	"/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver": {
-		"resource_id": "/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver",
-		"resource_type": "azurerm_mssql_server",
+	"/subscriptions/57f08f70-aba5-4349-b051-84b24560fd89/resourceGroups/japan-real-estate/providers/Microsoft.Sql/servers/japandbserver/databases/japan": {
+		"resource_id": "/subscriptions/57f08f70-aba5-4349-b051-84b24560fd89/resourceGroups/japan-real-estate/providers/Microsoft.Sql/servers/japandbserver/databases/japan",
+		"resource_type": "azurerm_mssql_database",
 		"resource_name": "res-22"
 	},
-	"/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/administrators/ActiveDirectory": {
-		"resource_id": "/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/administrators/ActiveDirectory",
-		"resource_type": "azurerm_sql_active_directory_administrator",
-		"resource_name": "res-23"
-	},
-	"/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/databases/master/extendedAuditingSettings/Default": {
-		"resource_id": "/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/databases/master/extendedAuditingSettings/Default",
+	"/subscriptions/57f08f70-aba5-4349-b051-84b24560fd89/resourceGroups/japan-real-estate/providers/Microsoft.Sql/servers/japandbserver/databases/japan/extendedAuditingSettings/Default": {
+		"resource_id": "/subscriptions/57f08f70-aba5-4349-b051-84b24560fd89/resourceGroups/japan-real-estate/providers/Microsoft.Sql/servers/japandbserver/databases/japan/extendedAuditingSettings/Default",
 		"resource_type": "azurerm_mssql_database_extended_auditing_policy",
-		"resource_name": "res-37"
+		"resource_name": "res-33"
 	},
-	"/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/databases/p1sqldatabase": {
-		"resource_id": "/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/databases/p1sqldatabase",
-		"resource_type": "azurerm_mssql_database",
-		"resource_name": "res-43"
-	},
-	"/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/databases/p1sqldatabase/extendedAuditingSettings/Default": {
-		"resource_id": "/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/databases/p1sqldatabase/extendedAuditingSettings/Default",
+	"/subscriptions/57f08f70-aba5-4349-b051-84b24560fd89/resourceGroups/japan-real-estate/providers/Microsoft.Sql/servers/japandbserver/databases/master/extendedAuditingSettings/Default": {
+		"resource_id": "/subscriptions/57f08f70-aba5-4349-b051-84b24560fd89/resourceGroups/japan-real-estate/providers/Microsoft.Sql/servers/japandbserver/databases/master/extendedAuditingSettings/Default",
 		"resource_type": "azurerm_mssql_database_extended_auditing_policy",
+		"resource_name": "res-42"
+	},
+	"/subscriptions/57f08f70-aba5-4349-b051-84b24560fd89/resourceGroups/japan-real-estate/providers/Microsoft.Sql/servers/japandbserver/devOpsAuditingSettings/Default": {
+		"resource_id": "/subscriptions/57f08f70-aba5-4349-b051-84b24560fd89/resourceGroups/japan-real-estate/providers/Microsoft.Sql/servers/japandbserver/devOpsAuditingSettings/Default",
+		"resource_type": "azurerm_mssql_server_microsoft_support_auditing_policy",
+		"resource_name": "res-48"
+	},
+	"/subscriptions/57f08f70-aba5-4349-b051-84b24560fd89/resourceGroups/japan-real-estate/providers/Microsoft.Sql/servers/japandbserver/encryptionProtector/current": {
+		"resource_id": "/subscriptions/57f08f70-aba5-4349-b051-84b24560fd89/resourceGroups/japan-real-estate/providers/Microsoft.Sql/servers/japandbserver/encryptionProtector/current",
+		"resource_type": "azurerm_mssql_server_transparent_data_encryption",
 		"resource_name": "res-49"
 	},
-	"/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/devOpsAuditingSettings/Default": {
-		"resource_id": "/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/devOpsAuditingSettings/Default",
-		"resource_type": "azurerm_mssql_server_microsoft_support_auditing_policy",
+	"/subscriptions/57f08f70-aba5-4349-b051-84b24560fd89/resourceGroups/japan-real-estate/providers/Microsoft.Sql/servers/japandbserver/extendedAuditingSettings/Default": {
+		"resource_id": "/subscriptions/57f08f70-aba5-4349-b051-84b24560fd89/resourceGroups/japan-real-estate/providers/Microsoft.Sql/servers/japandbserver/extendedAuditingSettings/Default",
+		"resource_type": "azurerm_mssql_server_extended_auditing_policy",
+		"resource_name": "res-50"
+	},
+	"/subscriptions/57f08f70-aba5-4349-b051-84b24560fd89/resourceGroups/japan-real-estate/providers/Microsoft.Sql/servers/japandbserver/firewallRules/AllowAllWindowsAzureIps": {
+		"resource_id": "/subscriptions/57f08f70-aba5-4349-b051-84b24560fd89/resourceGroups/japan-real-estate/providers/Microsoft.Sql/servers/japandbserver/firewallRules/AllowAllWindowsAzureIps",
+		"resource_type": "azurerm_mssql_firewall_rule",
+		"resource_name": "res-51"
+	},
+	"/subscriptions/57f08f70-aba5-4349-b051-84b24560fd89/resourceGroups/japan-real-estate/providers/Microsoft.Sql/servers/japandbserver/securityAlertPolicies/Default": {
+		"resource_id": "/subscriptions/57f08f70-aba5-4349-b051-84b24560fd89/resourceGroups/japan-real-estate/providers/Microsoft.Sql/servers/japandbserver/securityAlertPolicies/Default",
+		"resource_type": "azurerm_mssql_server_security_alert_policy",
+		"resource_name": "res-53"
+	},
+	"/subscriptions/57f08f70-aba5-4349-b051-84b24560fd89/resourceGroups/japan-real-estate/providers/Microsoft.Sql/servers/japandbserver/vulnerabilityAssessments/Default": {
+		"resource_id": "/subscriptions/57f08f70-aba5-4349-b051-84b24560fd89/resourceGroups/japan-real-estate/providers/Microsoft.Sql/servers/japandbserver/vulnerabilityAssessments/Default",
+		"resource_type": "azurerm_mssql_server_vulnerability_assessment",
 		"resource_name": "res-55"
 	},
-	"/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/encryptionProtector/current": {
-		"resource_id": "/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/encryptionProtector/current",
-		"resource_type": "azurerm_mssql_server_transparent_data_encryption",
-		"resource_name": "res-56"
-	},
-	"/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/extendedAuditingSettings/Default": {
-		"resource_id": "/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/extendedAuditingSettings/Default",
-		"resource_type": "azurerm_mssql_server_extended_auditing_policy",
-		"resource_name": "res-57"
-	},
-	"/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/firewallRules/AllowAllWindowsAzureIps": {
-		"resource_id": "/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/firewallRules/AllowAllWindowsAzureIps",
-		"resource_type": "azurerm_mssql_firewall_rule",
-		"resource_name": "res-58"
-	},
-	"/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/firewallRules/ClientIPAddress_2024-06-18_07:47:02": {
-		"resource_id": "/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/firewallRules/ClientIPAddress_2024-06-18_07:47:02",
-		"resource_type": "azurerm_mssql_firewall_rule",
-		"resource_name": "res-59"
-	},
-	"/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/firewallRules/ClientIPAddress_2024-06-28_09:57:47": {
-		"resource_id": "/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/firewallRules/ClientIPAddress_2024-06-28_09:57:47",
-		"resource_type": "azurerm_mssql_firewall_rule",
-		"resource_name": "res-60"
-	},
-	"/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/firewallRules/ClientIPAddress_2024-07-12_04:53:34": {
-		"resource_id": "/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/firewallRules/ClientIPAddress_2024-07-12_04:53:34",
-		"resource_type": "azurerm_mssql_firewall_rule",
-		"resource_name": "res-61"
-	},
-	"/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/firewallRules/ClientIPAddress_2024-6-18_21-45-49": {
-		"resource_id": "/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/firewallRules/ClientIPAddress_2024-6-18_21-45-49",
-		"resource_type": "azurerm_mssql_firewall_rule",
-		"resource_name": "res-62"
-	},
-	"/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/securityAlertPolicies/Default": {
-		"resource_id": "/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/securityAlertPolicies/Default",
-		"resource_type": "azurerm_mssql_server_security_alert_policy",
-		"resource_name": "res-64"
-	},
-	"/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/vulnerabilityAssessments/Default": {
-		"resource_id": "/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Sql/servers/p1datasqlserver/vulnerabilityAssessments/Default",
-		"resource_type": "azurerm_mssql_server_vulnerability_assessment",
-		"resource_name": "res-66"
-	},
-	"/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Storage/storageAccounts/p1datastore": {
-		"resource_id": "/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Storage/storageAccounts/p1datastore",
+	"/subscriptions/57f08f70-aba5-4349-b051-84b24560fd89/resourceGroups/japan-real-estate/providers/Microsoft.Storage/storageAccounts/japandatastorage": {
+		"resource_id": "/subscriptions/57f08f70-aba5-4349-b051-84b24560fd89/resourceGroups/japan-real-estate/providers/Microsoft.Storage/storageAccounts/japandatastorage",
 		"resource_type": "azurerm_storage_account",
-		"resource_name": "res-67"
-	},
-	"/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Storage/storageAccounts/p1datastore/blobServices/default/containers/chicago": {
-		"resource_id": "https://p1datastore.blob.core.windows.net/chicago",
-		"resource_type": "azurerm_storage_container",
-		"resource_name": "res-69"
-	},
-	"/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Storage/storageAccounts/p1datastore/blobServices/default/containers/inputs": {
-		"resource_id": "https://p1datastore.blob.core.windows.net/inputs",
-		"resource_type": "azurerm_storage_container",
-		"resource_name": "res-70"
-	},
-	"/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Storage/storageAccounts/p1datastore/blobServices/default/containers/new-york": {
-		"resource_id": "https://p1datastore.blob.core.windows.net/new-york",
-		"resource_type": "azurerm_storage_container",
-		"resource_name": "res-71"
-	},
-	"/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Storage/storageAccounts/p1datastore/blobServices/default/containers/san-francisco": {
-		"resource_id": "https://p1datastore.blob.core.windows.net/san-francisco",
-		"resource_type": "azurerm_storage_container",
-		"resource_name": "res-72"
-	},
-	"/subscriptions/b8f28090-9e18-4ad7-b2f1-18585dd7fc5b/resourceGroups/p1-data-analysis/providers/Microsoft.Storage/storageAccounts/p1datastore/blobServices/default/containers/seattle": {
-		"resource_id": "https://p1datastore.blob.core.windows.net/seattle",
-		"resource_type": "azurerm_storage_container",
-		"resource_name": "res-73"
+		"resource_name": "res-56"
 	}
 }

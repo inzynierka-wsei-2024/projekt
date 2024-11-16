@@ -1,7 +1,7 @@
 provider "azurerm" {
   features {
   }
-  subscription_id            = "b8f28090-9e18-4ad7-b2f1-18585dd7fc5b"
+  subscription_id            = "57f08f70-aba5-4349-b051-84b24560fd89"
   environment                = "public"
   use_msi                    = false
   use_cli                    = true
