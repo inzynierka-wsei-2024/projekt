@@ -1,0 +1,14 @@
+DROP TABLE dbo.Transactions;
+DROP TABLE dbo.Cities;  
+DROP TABLE dbo.Directions;
+DROP TABLE dbo.Districts;
+DROP TABLE dbo.FloorPlans;
+DROP TABLE dbo.FrontageRoadTypes;
+DROP TABLE dbo.LandShapes;
+DROP TABLE dbo.PlanningTypes;
+DROP TABLE dbo.Prefectures;
+DROP TABLE dbo.RealEstateTypes;
+DROP TABLE dbo.Regions;
+DROP TABLE dbo.Stations;
+DROP TABLE dbo.Structures;
+DROP TABLE dbo.UsageTypes;
