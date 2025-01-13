@@ -1,10 +1,11 @@
-1. [now] Remove unnecessary elements
-2. [now] Rename everything accordingly to its purpose (including blob storage)
+1. [done] Remove unnecessary elements
+2. [done] Rename everything accordingly to its purpose (including blob storage)
 3. [later] Simplify pipelines (if possible)
-4. [now] Make pipelines parallel
-5. [now] Make pipelines capture changes in data
-6. [later / optional] Add handling errors / storing logs
-7. [later / optional] Add transactions between parent tables
-8. [now] Add triggers
-9. [now] Handle correctly uploading many files in a short time 
-10. [later] Load all data
+4. [later] Use parameters in `prepareDataToLoad` in `loadDimensions`
+5. [done] Make pipelines parallel
+6. [done] Make pipelines capture changes in data
+7. [later / optional] Add handling errors / storing logs
+8. [later / optional] Add transactions between parent tables (related to 7th point)
+9. [done] Add triggers
+10. [done] Handle correctly uploading many files in a short time 
+11. [later] Load all data
