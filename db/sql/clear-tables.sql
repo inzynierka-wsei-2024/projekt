@@ -1,0 +1,14 @@
+DELETE FROM Transactions;
+DELETE FROM Cities;
+DELETE FROM Directions;
+DELETE FROM Districts;
+DELETE FROM FloorPlans;
+DELETE FROM FrontageRoadTypes;
+DELETE FROM LandShapes;
+DELETE FROM PlanningTypes;
+DELETE FROM Prefectures;
+DELETE FROM RealEstateTypes;
+DELETE FROM Regions;
+DELETE FROM Stations;
+DELETE FROM Structures;
+DELETE FROM UsageTypes;
